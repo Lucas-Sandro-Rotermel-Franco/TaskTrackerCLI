@@ -17,3 +17,12 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes (
+            'Main-Class': 'LucasRotermel.TaskTracker.Client.TaskTrackerMain'
+        )
+    }
+    setArchiveFileName("TaskTracker.jar")
+}
