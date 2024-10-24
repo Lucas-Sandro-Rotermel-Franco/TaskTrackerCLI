@@ -4,7 +4,7 @@ import LucasRotermel.TaskTracker.Exceptions.ArgumentQuantityException;
 import LucasRotermel.TaskTracker.Manager.TaskTrackerManager;
 
 public class TaskTrackerMain {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws ArgumentQuantityException{
         TaskTrackerManager manager = new TaskTrackerManager();
         try {
             if (args.length == 0)
@@ -12,7 +12,7 @@ public class TaskTrackerMain {
 
             manager.init(args);
         } catch (ArgumentQuantityException ex) {
-
+            System.out.println(ex.getMessage());
         }
 
     }
