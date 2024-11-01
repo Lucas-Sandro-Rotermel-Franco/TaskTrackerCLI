@@ -5,7 +5,8 @@ public class ArgumentQuantityException extends RuntimeException {
         super(message);
     }
 
-    public ArgumentQuantityException(int obtained, String command) {
-        new ArgumentQuantityException("Expected arguments to command " + command);
+    public ArgumentQuantityException(int obtained, String command, String expected) {
+        super("Expected quantity of arguments to command " + command + ": " + expected
+                                      + "\nObtained arguments quantity: " + obtained);
     }
 }

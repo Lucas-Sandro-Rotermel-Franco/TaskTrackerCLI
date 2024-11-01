@@ -1,5 +1,6 @@
 package LucasRotermel.TaskTracker.Commands;
 
+import LucasRotermel.TaskTracker.Exceptions.ArgumentQuantityException;
 import LucasRotermel.TaskTracker.Exceptions.IncorrectExecuteException;
 import LucasRotermel.TaskTracker.Manager.Task;
 
@@ -23,19 +24,19 @@ public class Add extends Command {
     @Override
     public List<Task> execute(List<Task> tasks, String[] args) {
         if (args.length <= 1 || args.length > 2)
-            throw new IncorrectExecuteException();
-        else {
-            Task task = new Task();
-            task.setId(this.id + 1);
-            task.setDescription(args[1]);
-            task.setStatus("todo");
+            throw new ArgumentQuantityException(args.length - 1, "Add", "1" );
 
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            task.setDtCreated(dtf.format(LocalDateTime.now()));
-            task.setDtUpdated(dtf.format(LocalDateTime.now()));
+        Task task = new Task();
+        task.setId(this.id + 1);
+        task.setDescription(args[1]);
+        task.setStatus("todo");
 
-            tasks.add(task);
-        }
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        task.setDtCreated(dtf.format(LocalDateTime.now()));
+        task.setDtUpdated(dtf.format(LocalDateTime.now()));
+
+        tasks.add(task);
+
 
         return tasks;
     }

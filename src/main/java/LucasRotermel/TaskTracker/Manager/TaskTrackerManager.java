@@ -28,9 +28,6 @@ public class TaskTrackerManager {
 
              fileBkp = new File(FILE_BACKUP.toString());
              fileBkp.createNewFile();
-
-             if (!args[0].equals("--help"))
-                Files.copy(FILE, FILE_BACKUP, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             System.out.println("An error ocurred.");
             e.printStackTrace();
@@ -46,6 +43,13 @@ public class TaskTrackerManager {
             case "mark-in-progress": tasks = executeCommand(new MarkInProgress()      , args, tasks); break;
             case "update"          : tasks = executeCommand(new Update        ()      , args, tasks); break;
             case "--help"          : executeCommand        (new Help          ()                   ); break;
+        }
+
+        try {
+            if (!args[0].equals("--help"))
+                Files.copy(FILE, FILE_BACKUP, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         writeFile(file, tasks);
