@@ -4,14 +4,9 @@ import LucasRotermel.TaskTracker.Exceptions.ArgumentQuantityException;
 import LucasRotermel.TaskTracker.Exceptions.IncorrectExecuteException;
 import LucasRotermel.TaskTracker.Manager.Task;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.MatchResult;
-import java.util.stream.Stream;
 
 public class Add extends Command {
     private int id;

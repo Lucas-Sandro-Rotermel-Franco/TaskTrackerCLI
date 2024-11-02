@@ -46,7 +46,7 @@ public class TaskTrackerManager {
         }
 
         try {
-            if (!args[0].equals("--help"))
+            if (!args[0].equals("--help") || !args[0].equals("list"))
                 Files.copy(FILE, FILE_BACKUP, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException(e);
