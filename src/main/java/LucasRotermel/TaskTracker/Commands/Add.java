@@ -18,7 +18,7 @@ public class Add extends Command {
 
     @Override
     public List<Task> execute(List<Task> tasks, String[] args) {
-        if (args.length <= 1 || args.length > 2)
+        if (args.length != 2)
             throw new ArgumentQuantityException(args.length - 1, "Add", "1" );
 
         Task task = new Task();
@@ -31,7 +31,6 @@ public class Add extends Command {
         task.setDtUpdated(dtf.format(LocalDateTime.now()));
 
         tasks.add(task);
-
 
         return tasks;
     }

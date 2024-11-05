@@ -1,8 +1,8 @@
 package LucasRotermel.TaskTracker.Commands;
 
-import LucasRotermel.TaskTracker.Exceptions.InexistentIDException;
 import LucasRotermel.TaskTracker.Exceptions.StatusFlowException;
 import LucasRotermel.TaskTracker.Manager.Task;
+import LucasRotermel.TaskTracker.Utils.IntValidations;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,10 +16,7 @@ public abstract class Mark extends Command{
     }
 
     protected List<Task> changeStatus(List<Task> tasks, int id) {
-        int index = obtainIndex(tasks, id);
-
-        if (index == -1)
-            throw new InexistentIDException();
+        int index = IntValidations.validateIndexExists(id, tasks);
 
         if (status.equals("done") && !tasks.get(index).getStatus().equals("in-progress"))
             throw new StatusFlowException();
@@ -33,14 +30,5 @@ public abstract class Mark extends Command{
         tasks.get(index).setDtUpdated(dtf.format(LocalDateTime.now()));
 
         return tasks;
-    }
-
-    private int obtainIndex(List<Task> tasks, int id) {
-        for (Task task : tasks) {
-            if (task.getId() == id)
-                return tasks.indexOf(task);
-        }
-
-        return -1;
     }
 }
