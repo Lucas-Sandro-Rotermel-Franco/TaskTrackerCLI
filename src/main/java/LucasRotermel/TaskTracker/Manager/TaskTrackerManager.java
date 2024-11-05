@@ -1,6 +1,7 @@
 package LucasRotermel.TaskTracker.Manager;
 
 import LucasRotermel.TaskTracker.Commands.*;
+import LucasRotermel.TaskTracker.Exceptions.CommandDontExistsException;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -43,10 +44,11 @@ public class TaskTrackerManager {
             case "mark-in-progress": tasks = executeCommand(new MarkInProgress()      , args, tasks); break;
             case "update"          : tasks = executeCommand(new Update        ()      , args, tasks); break;
             case "--help"          : executeCommand        (new Help          ()                   ); break;
+            default                : throw new CommandDontExistsException();
         }
 
         try {
-            if (!args[0].equals("--help") || !args[0].equals("list"))
+            if (!args[0].equals("--help") && !args[0].equals("list"))
                 Files.copy(FILE, FILE_BACKUP, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException(e);
