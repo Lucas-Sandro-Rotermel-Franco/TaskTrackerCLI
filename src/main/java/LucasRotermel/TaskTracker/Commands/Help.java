@@ -21,6 +21,6 @@ public class Help extends Command {
         System.out.println("update [<task sequence number>] [<task name>]  Update existing task name");
         System.out.println("mark-in-progress [<task sequence number>]      Update task to in-progress status");
         System.out.println("mark-done [<task sequence number>]             Update task to done status");
-        System.out.println("list [<Optional status>]                       Show all tasks or filtered by status");
+        System.out.println("list [<Optional status>]                       Show all tasks or filtered by status(\"todo\", \"in-progress\", \"done\")");
     }
 }
