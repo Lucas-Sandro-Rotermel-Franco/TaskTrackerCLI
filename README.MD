@@ -32,7 +32,7 @@ Big thanks to Le Phuoc Loc, the owner of the repository: [task_tracker_cli](http
  3. Access the Windows Environment Variables; 
   
     3.1 Add to the PATH variable the directory where the repository was cloned. Example:
-      ![Path environment](images\PATH.png)
+      ![Path environment](https://github.com/Lucas-Sandro-Rotermel-Franco/TaskTrackerCLI/blob/master/images/PATH.png)
 
   4. After this open the CMD and run the command:
    ``` 
